@@ -13,10 +13,10 @@ router = APIRouter()
 load_dotenv()
 
 # Initialize Supabase client with environment variables
-supabase_url = os.getenv("SUPABASE_URL")
-supabase_key = os.getenv("SUPABASE_KEY")
+supabase_url = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
+supabase_key = os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
 if not supabase_url or not supabase_key:
-    raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set in .env file")
+    raise ValueError("NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY must be set in .env file")
 supabase: Client = create_client(supabase_url, supabase_key)
 
 # Get Google Maps API key from environment variables
