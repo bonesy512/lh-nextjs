@@ -1,7 +1,7 @@
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { useAppStore } from "@/utils/store";
 import brain from "brain";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { GetConfigData, PropertySearchResult } from "types";
 
 interface Coordinates {
@@ -53,35 +53,6 @@ export function SearchBar({ onSearch, mapRef }: Props) {
 
   const [query, setQuery] = useState("");
   const searchTimeout = useRef<NodeJS.Timeout>();
-
-  useEffect(() => {
-    if (!query || query.length < 2) {
-      setSearchResults([]);
-      return;
-    }
-
-    // Only show loading state if query is long enough
-    if (query.length >= 2) {
-      setLoading(true);
-    }
-
-    // Clear previous timeout
-    if (searchTimeout.current) {
-      clearTimeout(searchTimeout.current);
-    }
-
-    // Set new timeout for 500ms for better responsiveness
-    searchTimeout.current = setTimeout(() => {
-      handleSearch(query);
-    }, 500);
-
-    // Cleanup timeout on unmount or when query changes
-    return () => {
-      if (searchTimeout.current) {
-        clearTimeout(searchTimeout.current);
-      }
-    };
-  }, [query, handleSearch]);
 
   const isCoordinates = (query: string): Coordinates | null => {
     // Match patterns like "40.7128,-74.0060" or "40.7128, -74.0060"
@@ -156,7 +127,7 @@ export function SearchBar({ onSearch, mapRef }: Props) {
     }
   };
 
-  const handleSearch = async (query: string) => {
+  const handleSearch = useCallback(async (query: string) => {
     // Don't search if query is too short or no token
     if (query.length < 2) return;
     if (!query) {
@@ -213,7 +184,36 @@ export function SearchBar({ onSearch, mapRef }: Props) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!query || query.length < 2) {
+      setSearchResults([]);
+      return;
+    }
+
+    // Only show loading state if query is long enough
+    if (query.length >= 2) {
+      setLoading(true);
+    }
+
+    // Clear previous timeout
+    if (searchTimeout.current) {
+      clearTimeout(searchTimeout.current);
+    }
+
+    // Set new timeout for 500ms for better responsiveness
+    searchTimeout.current = setTimeout(() => {
+      handleSearch(query);
+    }, 500);
+
+    // Cleanup timeout on unmount or when query changes
+    return () => {
+      if (searchTimeout.current) {
+        clearTimeout(searchTimeout.current);
+      }
+    };
+  }, [query, handleSearch]);
 
   return (
     <div className="relative w-full">

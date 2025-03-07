@@ -1,7 +1,7 @@
 import { Layer, Source } from "react-map-gl";
 import { useAppStore } from "@/utils/store";
 import * as turf from "@turf/turf";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // No props needed anymore as we use store
 
@@ -15,7 +15,7 @@ export function MeasurementLayer() {
   } = useAppStore();
 
   // Generate GeoJSON for visualization
-  const getGeoJSON = () => {
+  const getGeoJSON = useCallback(() => {
     if (!measurementPoints || !Array.isArray(measurementPoints)) return null;
     if (measurementPoints.length === 0 && measurementMode === 'none') return null;
 
@@ -86,7 +86,7 @@ export function MeasurementLayer() {
       type: "FeatureCollection",
       features: [...pointFeatures, mainFeature],
     };
-  };
+  }, [measurementPoints, measurementMode, viewportCenter]);
 
   // Calculate measurement
   useEffect(() => {
