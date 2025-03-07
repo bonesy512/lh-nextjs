@@ -36,7 +36,7 @@ export default function Home() {
         />
         <p className="max-w-2xl mt-6 text-lg text-gray-700 dark:text-gray-200">
           Automate land investment with AI-driven comp analysis, geographic
-          parcel selection, and marketing workflows. Powered by AI and
+          parcel selection, and marketing workflows. Powered by GPT-4o and
           Stripe tokenized payments.
         </p>
         <div className="mt-8 space-x-4">
@@ -67,7 +67,7 @@ export default function Home() {
             Parcel Exploration
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            Explore land parcels with an interactive map and trigger Artificial Intelligence
+            Explore land parcels with an interactive map and trigger AI
             analysis instantly.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function Home() {
             AI Comps Generation
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            Get comparable sales analysis using Artificial Intelligence, MLS data, GOV records, and county
+            Get comparable sales analysis using GPT-4o, MLS data, and county
             records.
           </p>
         </div>
