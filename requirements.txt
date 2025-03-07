@@ -1,37 +1,3 @@
 # FastAPI framework and server
 fastapi==0.111.0
 uvicorn[standard]==0.29.0
-pydantic==2.10.3
-python-multipart==0.0.9
-
-# Development and notebooks
-ipykernel==6.29.5
-
-# HTTP and web scraping
-requests==2.31.0
-httpx==0.25.2
-beautifulsoup4==4.12.2
-firecrawl==1.13.5
-
-# Data processing and APIs
-openai==1.12.0
-tiktoken==0.5.2
-exa-py==1.8.9
-stripe==7.8.1
-
-# Supabase integration (replacing Firebase)
-supabase==2.3.4  # Python client for Supabase
-python-jose[cryptography]==3.3.0  # For JWT verification if needed
-
-# Geospatial
-shapely==2.0.2
-geojson==3.1.0
-pyproj==3.6.1
-
-# Utilities
-python-dotenv==1.0.0
-pydantic[email]==2.10.3
-
-# Optional dependencies
-aiohttp==3.9.1  # For async requests
-pandas==2.2.0   # For data analysis if needed
