@@ -33,10 +33,10 @@ export default function RootLayout({
             </div>
             <div className="flex gap-6">
               <a
-                href="/#features"
+                href="/login"
                 className="text-sm hover:text-blue-600 dark:hover:text-blue-400"
               >
-                Features
+                Login
               </a>
               <a
                 href="https://discord.gg/landhacker" // Replace with actual Discord link
