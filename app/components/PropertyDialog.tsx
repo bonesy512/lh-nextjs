@@ -19,6 +19,7 @@ import { savePropertyQuery } from "@/utils/firebase";
 import { cn } from "@/lib/utils";
 import { useQueueStore, PriceJob } from "@/utils/queue";
 import type { PropertyDetailsResponse } from "types";
+import Loader2 from 'path-to-loader2';
 
 export interface Props {
   open: boolean;
@@ -125,7 +126,7 @@ export function PropertyDialog({ open, onOpenChange }: Props) {
         setSelectedProperty(savedProperty);
       }
     }
-  }, [open, selectedProperty?.address, savedProperties, setSelectedProperty]);
+  }, [open, selectedProperty, savedProperties, setSelectedProperty]);
   
   const renderParcelInfo = () => {
     if (!(selectedProperty?.propertyId || selectedProperty?.ownerName || selectedProperty?.gisArea || selectedProperty?.landValue)) {

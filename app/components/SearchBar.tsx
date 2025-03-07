@@ -81,7 +81,7 @@ export function SearchBar({ onSearch, mapRef }: Props) {
         clearTimeout(searchTimeout.current);
       }
     };
-  }, [query]);
+  }, [query, handleSearch]);
 
   const isCoordinates = (query: string): Coordinates | null => {
     // Match patterns like "40.7128,-74.0060" or "40.7128, -74.0060"

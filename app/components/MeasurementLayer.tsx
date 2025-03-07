@@ -111,7 +111,7 @@ export function MeasurementLayer() {
     }
 
     setCurrentMeasurement(measurement);
-  }, [measurementPoints, viewportCenter, measurementMode]);
+  }, [measurementPoints, viewportCenter, measurementMode, getGeoJSON, setCurrentMeasurement]);
 
   const geojson = getGeoJSON();
   if (!geojson) return null;

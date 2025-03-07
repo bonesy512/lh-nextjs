@@ -313,7 +313,7 @@ This estimate uses similarity clustering to group properties with similar prices
               <Alert variant="destructive" className="max-w-sm">
                 <CoinsIcon className="w-4 h-4" />
                 <AlertDescription>
-                  You're out of credits. Purchase more credits to continue analyzing properties.
+                  You are out of credits. Purchase more credits to continue analyzing properties.
                 </AlertDescription>
               </Alert>
             )}

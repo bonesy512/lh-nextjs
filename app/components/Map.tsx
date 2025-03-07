@@ -361,7 +361,7 @@ export function MapView({ mapRef: externalMapRef }: Props) {
         }));
       }
     }
-  }, [selectedProperty]);
+  }, [selectedProperty, shouldCenterMap]);
 
   useEffect(() => {
     setIsStyleLoading(true);
@@ -502,8 +502,8 @@ export function MapView({ mapRef: externalMapRef }: Props) {
       )}
 
       {/* Crosshair overlay */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
-        <div className="w-6 h-6 flex items-center justify-center">
+      <div className="absolute z-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none left-1/2 top-1/2">
+        <div className="flex items-center justify-center w-6 h-6">
           <div className={`w-0.5 h-6 absolute ${mapStyle === "custom" ? "bg-white" : "bg-black"}`}></div>
           <div className={`w-6 h-0.5 absolute ${mapStyle === "custom" ? "bg-white" : "bg-black"}`}></div>
         </div>

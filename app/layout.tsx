@@ -2,7 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
+import Image from 'next/image';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,10 +24,12 @@ export default function RootLayout({
         <nav className="sticky top-0 z-20 w-full px-8 py-4 bg-white border-b border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <div className="flex items-center justify-between max-w-5xl mx-auto">
             <div className="flex items-center gap-2">
-              <img
+              <Image
                 src="/Landhacker.svg"
                 alt="Landhacker Logo"
-                className="w-8 h-8 dark:invert"
+                width={32}
+                height={32}
+                className="dark:invert"
               />
               <span className="text-lg font-semibold">Landhacker</span>
             </div>
